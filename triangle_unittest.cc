@@ -150,7 +150,7 @@ TEST( TriangleTest, IsoscelesTriange ) {
 }
 
 TEST( TriangleTest, ScaleneTriange) {
-	EXPECT_EQ( get_triangle_type(10, 11, 12), TYPE_TRIANGLE_ISOSCELES );
-	EXPECT_EQ( get_triangle_type(12, 10, 11), TYPE_TRIANGLE_ISOSCELES );
-	EXPECT_EQ( get_triangle_type(11, 12, 10), TYPE_TRIANGLE_ISOSCELES );
+	EXPECT_EQ( get_triangle_type(10, 11, 12), TYPE_TRIANGLE_SCALENE );
+	EXPECT_EQ( get_triangle_type(12, 10, 11), TYPE_TRIANGLE_SCALENE );
+	EXPECT_EQ( get_triangle_type(11, 12, 10), TYPE_TRIANGLE_SCALENE );
 }
