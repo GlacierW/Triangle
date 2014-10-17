@@ -30,6 +30,7 @@ TEST( TriangleTest, NormalBoundaryEdgeValue ) {
 	// all at min bound
 	EXPECT_EQ( get_triangle_type(1, 1, 1), TYPE_TRIANGLE_EQUILATERAL );
 	
+	/* ----------------------------------- */
 	
 	// one at min + 1 bound
 	EXPECT_EQ( get_triangle_type(2, 10, 10), TYPE_TRIANGLE_ISOSCELES );
@@ -44,6 +45,7 @@ TEST( TriangleTest, NormalBoundaryEdgeValue ) {
 	// all at min + 1 bound
 	EXPECT_EQ( get_triangle_type(2, 2, 2), TYPE_TRIANGLE_EQUILATERAL );
 	
+	/* ----------------------------------- */
 	
 	// one at max bound
 	EXPECT_EQ( get_triangle_type(200, 150, 150), TYPE_TRIANGLE_ISOSCELES );
@@ -58,6 +60,7 @@ TEST( TriangleTest, NormalBoundaryEdgeValue ) {
 	// all at max bound
 	EXPECT_EQ( get_triangle_type(200, 200, 200), TYPE_TRIANGLE_EQUILATERAL );
 	
+	/* ----------------------------------- */
 	
 	// one at max - 1 bound
 	EXPECT_EQ( get_triangle_type(199, 150, 150), TYPE_TRIANGLE_ISOSCELES );
@@ -71,6 +74,8 @@ TEST( TriangleTest, NormalBoundaryEdgeValue ) {
 	
 	// all at max - 1 bound
 	EXPECT_EQ( get_triangle_type(199, 199, 199), TYPE_TRIANGLE_EQUILATERAL );
+	
+	/* ----------------------------------- */
 		
 	// combination of min & max bound ( 1 min, 2 max )
 	EXPECT_EQ( get_triangle_type(1, 200, 200), TYPE_TRIANGLE_ISOSCELES );
@@ -84,6 +89,45 @@ TEST( TriangleTest, NormalBoundaryEdgeValue ) {
 }
 
 TEST( TriangleTest, RobustBoundaryEdgeValue ) {
+	// one at min - 1 bound
+	EXPECT_EQ( get_triangle_type(0, 10, 10), TYPE_TRIANGLE_INVALID_INPUT );
+	EXPECT_EQ( get_triangle_type(10, 0, 10), TYPE_TRIANGLE_INVALID_INPUT );
+	EXPECT_EQ( get_triangle_type(10, 10, 0), TYPE_TRIANGLE_INVALID_INPUT );
+	
+	// two at min - 1 bound
+	EXPECT_EQ( get_triangle_type(0, 0, 10), TYPE_TRIANGLE_INVALID_INPUT );
+	EXPECT_EQ( get_triangle_type(0, 10, 0), TYPE_TRIANGLE_INVALID_INPUT );
+	EXPECT_EQ( get_triangle_type(10, 0, 0), TYPE_TRIANGLE_INVALID_INPUT );
+	
+	// all at min - 1 bound
+	EXPECT_EQ( get_triangle_type(0, 0, 0), TYPE_TRIANGLE_INVALID_INPUT );
+	
+	/* ----------------------------------- */
+	
+	// one at max + 1 bound
+	EXPECT_EQ( get_triangle_type(201, 150, 150), TYPE_TRIANGLE_INVALID_INPUT );
+	EXPECT_EQ( get_triangle_type(150, 201, 150), TYPE_TRIANGLE_INVALID_INPUT );
+	EXPECT_EQ( get_triangle_type(150, 150, 201), TYPE_TRIANGLE_INVALID_INPUT );
+	
+	// two at max + 1 bound
+	EXPECT_EQ( get_triangle_type(201, 201, 150), TYPE_TRIANGLE_INVALID_INPUT );
+	EXPECT_EQ( get_triangle_type(201, 150, 201), TYPE_TRIANGLE_INVALID_INPUT );
+	EXPECT_EQ( get_triangle_type(150, 201, 201), TYPE_TRIANGLE_INVALID_INPUT );
+	
+	// all at max + 1 bound
+	EXPECT_EQ( get_triangle_type(201, 201, 201), TYPE_TRIANGLE_INVALID_INPUT );
+	
+	/* ----------------------------------- */
+	
+	// combination of min - 1 & max + 1 ( 1 min-1, 2 max+1 )
+	EXPECT_EQ( get_triangle_type(0, 201, 201), TYPE_TRIANGLE_INVALID_INPUT );
+	EXPECT_EQ( get_triangle_type(201, 0, 201), TYPE_TRIANGLE_INVALID_INPUT );
+	EXPECT_EQ( get_triangle_type(201, 201, 0), TYPE_TRIANGLE_INVALID_INPUT );
+	
+	// combination of min - 1 & max + 1 ( 2 min-1, 1 max+1 )
+	EXPECT_EQ( get_triangle_type(201, 0, 0), TYPE_TRIANGLE_INVALID_INPUT );
+	EXPECT_EQ( get_triangle_type(0, 201, 0), TYPE_TRIANGLE_INVALID_INPUT );
+	EXPECT_EQ( get_triangle_type(0, 0, 201), TYPE_TRIANGLE_INVALID_INPUT );
 }
 
 TEST( TriangleTest, NotTriangle ) {
