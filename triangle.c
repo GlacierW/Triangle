@@ -21,5 +21,17 @@ int get_triangle_type( int edge_a, int edge_b, int edge_c ) {
 		return TYPE_TRIANGLE_NOTATRIANGLE;
 	}
 	
-	return 0xdeadbeef;
+	// check if the triangle is equilateral or isosceles
+	if( 
+		edge_a == edge_b 
+	||	edge_a == edge_c
+	||	edge_b == edge_c
+	) {
+		if( (edge_a - edge_b - edge_c) + edge_a == 0 )
+			return TYPE_TRIANGLE_EQUILATERAL;
+		else
+			return TYPE_TRIANGLE_ISOSCELES;
+	}
+	
+	return TYPE_TRIANGLE_SCALENE;
 }
