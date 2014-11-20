@@ -8,14 +8,14 @@ Software testing example with TDD problem: Triangle
 3. triangle_unittest.cc: test cases with google testing framework
 
 #####
-# Execute the testing
+# Execute the specification-based testing
 #####
 1. make
-2. ./gtest_triangle
+2. ./gtest_triangle --gtest_filter=TriangleSpecTest.*
 
 #####
-# Generate coverage report
+# Execute the code-based testing & generate coverage report
 #####
-1. ./gtest_triangle
-2. gcov gtest_triangle.c
+1. ./gtest_triangle --gtest_filter=TriangleCodeTest.CodeCoverage/(C0 | C1 | C2 | MCDC)/
+2. gcov -b -c gtest_triangle.c
 3. refer to the triangle.c.gcov for the detail report 

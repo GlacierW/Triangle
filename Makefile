@@ -6,8 +6,8 @@ OBJ       = gtest_main.o triangle.o triangle_unittest.o
 LINKOBJ   = gtest_main.o triangle.o triangle_unittest.o
 LINKFLAGS = -lgtest -pthread -lgcov
 BIN       = gtest_triangle
-CXXFLAGS  = -Wall -O2 -fprofile-arcs -ftest-coverage
-CFLAGS    = -Wall -O2 -fprofile-arcs -ftest-coverage
+CXXFLAGS  = -Wall -fprofile-arcs -ftest-coverage
+CFLAGS    = -Wall -fprofile-arcs -ftest-coverage
 RM        = rm -f
 GCOV_FILE = *.gcno *.gcda *.gcov
 
