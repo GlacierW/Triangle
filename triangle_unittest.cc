@@ -1,7 +1,6 @@
 #include "triangle.h"
 #include <gtest/gtest.h>
 
-
 /*****
  * Specification-based Testing
  *****/
